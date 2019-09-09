@@ -4,7 +4,9 @@ const Footer = () => {
 	return(
 		<footer>
 			<div>
-				<GitIcon/>
+				<a href='https://github.com/karttofer/parcel-app' target='_blank'>
+					<GitIcon/>
+				</a>
 			</div>
 		</footer>
 	)
