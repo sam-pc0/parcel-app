@@ -3,9 +3,42 @@ import ncp from 'ncp'
 import List from 'listr'
 import fs from 'fs'
 import shell from 'shelljs'
+import inquirer from 'inquirer'
 import { spawn } from 'child_process'
 import { promisify } from 'util'
 import { Observable } from 'rxjs'
+/*
+    Questions
+*/
+let questions: { type: string, name: string, message: string, choices? : [string, string] }[] = [
+    {
+        type:'input',
+        name:'projectName',
+        message:'Project name: '
+    },
+    {
+        type: 'list',
+        name: 'typeScriptOption',
+        message: 'Project type: ',
+        choices: ['React + Parcel', 'React + Parcel + TypeScript']
+    },
+    {
+        type: 'input',
+        name: 'sassOption',
+        message: 'Do you want to use Sass?',
+    }
+];
+const activateQuestions= (taskListFunction? : Function) : void => {
+    inquirer
+    .prompt(questions)
+    .then(function (answers) {
+        console.log(answers);
+        /*
+            Run the taskListFunction
+        */
+    })
+};
+
 /* 
     Welcome Message
 */
@@ -53,5 +86,6 @@ const finallMessage = (pathProject : string, projectName : string) : void => {
 
 export {
     welcomeMessage,
-    finallMessage
+    finallMessage,
+    activateQuestions
 }

@@ -1,6 +1,6 @@
-import { welcomeMessage, finallMessage } from './methods'
+import { welcomeMessage, finallMessage, activateQuestions } from './methods'
 
 export async function cli(args : string) {
-    finallMessage('/hello','hello')
+    activateQuestions()
 }
   
