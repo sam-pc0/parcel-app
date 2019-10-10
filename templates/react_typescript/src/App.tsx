@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from 'react';
 const Rocket = () => {
   return(
     <h1 className='icon'>🚀</h1>

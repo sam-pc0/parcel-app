@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 require = require('esm')(module /*, options*/);
-require('../lib/cli.js').cli('Hello')
+require('../lib/src/cli.js').cli('Hello')
