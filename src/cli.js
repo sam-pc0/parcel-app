@@ -9,9 +9,10 @@ import { welcomeMessage, finalMessage, taskList } from './methods.js'
 const actualPath = import.meta.url
 const templatesDir = path
   .resolve(new URL(actualPath).pathname, '../../templates/default')
-  .slice(3)
-export async function cli(args) {
+  // TODO: check if the changes do not affect windows  <12-07-20, sam-pc>
+export function cli(args) {
   welcomeMessage(args, `${process.cwd()}/${args}`)
-  await taskList(templatesDir, `${process.cwd()}/${args}`)
-  finalMessage(args, `${process.cwd()}`)
+  taskList(templatesDir, `${process.cwd()}/${args}`)
+    .then( finalMessage(args, `${process.cwd()}`))
+    .catch(error => console.log(error))
 }
